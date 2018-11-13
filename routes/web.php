@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::get('/','IndexController@index');
     Route::get('index','IndexController@index');
     Route::get('categoryList','ArticleController@categoryList');
+    Route::any('createCategory','ArticleController@createCategory');
 });
