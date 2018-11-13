@@ -75,7 +75,7 @@
                             <li><a><i class="fa fa-book"></i>文章管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="general_elements.html">文章列表</a></li>
-                                    <li><a href="media_gallery.html">栏目列表</a></li>
+                                    <li><a href="{{url('admin/categoryList')}}">栏目列表</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-table"></i>系统管理<span class="fa fa-chevron-down"></span></a>
