@@ -14,7 +14,7 @@
         <!-- Font Awesome -->
         <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
         <!-- Custom Theme Style -->
-        <link href="{{asset('css/custom.min.css')}}" rel="stylesheet">
+        <link href="{{asset('static/css/custom.min.css')}}" rel="stylesheet">
         @show
 </head>
 
@@ -49,7 +49,7 @@
 <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
 {{--<!-- Bootstrap -->--}}
 <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/custom.min.js')}}"></script>
+<script src="{{asset('static/js/custom.min.js')}}"></script>
 @show
 </body>
 </html>
