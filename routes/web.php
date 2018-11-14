@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-    Route::get('/','IndexController@index');
-    Route::get('index','IndexController@index');
-    Route::get('categoryList','ArticleController@categoryList');
-    Route::any('createCategory','ArticleController@createCategory');
-});
+
+Route::group(['middleware'=>['adminAuth']],function(){
+    Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+        Route::get('/','IndexController@index');
+        Route::get('index','IndexController@index');
+        Route::get('categoryList','ArticleController@categoryList');
+        Route::any('createCategory','ArticleController@createCategory');
+    });
+
+
+        });
+
+
