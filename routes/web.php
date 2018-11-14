@@ -21,7 +21,8 @@ Route::group(['middleware'=>['adminAuth']],function(){
         Route::get('/','IndexController@index');
         Route::get('index','IndexController@index');
 
-        Route::get('categoryList','ArticleController@categoryList');
+        Route::any('categoryList','ArticleController@categoryList');
+        Route::any('getCategoryList','ArticleController@getCategoryList');
         Route::any('createCategory','ArticleController@createCategory');
         Route::any('addCategory','ArticleController@addCategory');
         Route::any('checkCategory','ArticleController@checkCategory');

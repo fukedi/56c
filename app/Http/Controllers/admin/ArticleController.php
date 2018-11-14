@@ -7,21 +7,20 @@ use App\ArticlesCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 
 class ArticleController extends Controller{
-    //
 
-    public function categoryList(){
-
+    public function categoryList(Request $request){
         return view('admin.article.categoryList');
     }
 
-    public function createCategory(){
-        //$data=$request->input('category');
-        //$cate=ArticlesCategory::create($data);
-        //
-        //return redirect('admin/categoryList');
+    public function getCategoryList(){
+        $data=ArticlesCategory::select('id','category_name','parent_id')->get();
+        return response()->json($data);
+    }
 
+    public function createCategory(){
         return view('admin.article.createCategory');
     }
 

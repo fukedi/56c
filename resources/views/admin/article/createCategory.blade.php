@@ -38,7 +38,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">栏目名称</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input v-model="category_name" type="text" class="form-control" name="category[category_name]" placeholder="请输入栏目名称">
-                                <label v-show="error_message" class="control-label">@{{error_message}}</label>
+                                <label v-show="error_message" class="control-label text-danger">@{{error_message}}</label>
                             </div>
                         </div>
 

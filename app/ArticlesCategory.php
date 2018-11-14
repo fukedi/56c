@@ -13,4 +13,8 @@ class ArticlesCategory extends Model{
     ];
 
     public $timestamps=false;
+
+    public function getIsExpandAttribute($value){
+        return $value==1?'是':'否';
+    }
 }
