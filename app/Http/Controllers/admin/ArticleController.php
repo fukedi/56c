@@ -22,4 +22,17 @@ class ArticleController extends Controller{
 
         //return 'createCategory';
     }
+
+    //添加文章
+    public function createArticle(){
+
+        return view('admin.article.createArticle');
+    }
+
+    public function addArticle(Request $request){
+
+        $data=$request->input();
+        dd($data);
+
+    }
 }
