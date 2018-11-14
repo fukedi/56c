@@ -35,11 +35,11 @@
                     <br />
                     <form data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{url('admin/addArticle')}}">
                         {{csrf_field()}}
-
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">标题:</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" name="title" required="required" class="form-control col-md-7 col-xs-12">
+                                {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">xxxx</label>--}}
                             </div>
                         </div>
                         <div class="form-group">
@@ -57,16 +57,13 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">作者</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select name="author" class="form-control" required>
-                                    <option value="1">56c</option>
-                                    <option value="press">网络来源</option>
-                                </select>
+                                <input type="text" name="author" required="required" value="56C" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">内容</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea class="layui-textarea" id="LAY_demo2" name="content" style="display: none"></textarea>
+                                <textarea class="layui-textarea" id="content_id" name="content" style="display: none"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -84,39 +81,15 @@
     @stop
 
 @section('script')
+    @parent
     <script src="{{asset('static/layui/layui.js')}}" charset="utf-8"></script>
 
     <script>
         layui.use('layedit', function(){
             var layedit = layui.layedit
                 ,$ = layui.jquery;
-
             //构建一个默认的编辑器
-            var index = layedit.build('LAY_demo1');
-
-            //编辑器外部操作
-            var active = {
-                content: function(){
-                    alert(layedit.getContent(index)); //获取编辑器内容
-                }
-                ,text: function(){
-                    alert(layedit.getText(index)); //获取编辑器纯文本内容
-                }
-                ,selection: function(){
-                    alert(layedit.getSelection(index));
-                }
-            };
-
-            $('.site-demo-layedit').on('click', function(){
-                var type = $(this).data('type');
-                active[type] ? active[type].call(this) : '';
-            });
-
-            //自定义工具栏
-            layedit.build('LAY_demo2', {
-                tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
-                ,height: 100
-            })
+            var index = layedit.build('content_id');
         });
     </script>
     @stop

@@ -27,7 +27,7 @@ class Articles extends Migration
             $table->string('seo_desc')->default('')->comment('seo描述');
             $table->unsignedInteger('hits')->default('0')->comment('点击量');
             $table->unsignedTinyInteger('order_id')->default('0')->comment('排序');
-            $table->unsignedInteger('creeated_at')->default(0)->comment('创建时间');
+            $table->unsignedInteger('created_at')->default(0)->comment('创建时间');
             $table->unsignedInteger('updated_at')->default(0)->comment('更新时间');
         });
     }
