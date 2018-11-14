@@ -16,13 +16,13 @@ class ArticleController extends Controller{
         return view('admin.article.categoryList');
     }
 
-    public function createCategory(Request $request){
-        $data=$request->input('category');
-        $cate=ArticlesCategory::create($data);
+    public function createCategory(){
+        //$data=$request->input('category');
+        //$cate=ArticlesCategory::create($data);
+        //
+        //return redirect('admin/categoryList');
 
-        return redirect('admin/categoryList');
-
-        //return 'createCategory';
+        return view('admin.article.createCategory');
     }
 
     //添加文章
