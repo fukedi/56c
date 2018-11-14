@@ -23,7 +23,7 @@
             <div class="x_panel">
                 <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left" method="post" action="{{url('admin/createCategory')}}">
+                    <form ref="form" class="form-horizontal form-label-left" method="post" action="{{url('admin/addCategory')}}">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">所属栏目</label>
@@ -37,9 +37,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">栏目名称</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" required :value="name" name="category[category_name]" placeholder="请输入栏目名称">
+                                <input v-model="category_name" type="text" class="form-control" name="category[category_name]" placeholder="请输入栏目名称">
+                                <label v-show="error_message" class="control-label">@{{error_message}}</label>
                             </div>
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">栏目名称必填,长度为2~</label>
                         </div>
 
                         <div class="form-group">
@@ -76,12 +76,28 @@
         var app = new Vue({
             el: '#app',
             data: {
-                name: ''
+                category_name: '',
+                error_message:'',
             },
             methods:{
                 _submit(){
-                   if($this.name==''){
+                   if(this.category_name==''||this.category_name.length<2||this.category_name.length>50){
+                       this.error_message='栏目名称必填,长度为2~50个字符';
+                       console.log('true')
+                   }else{
+                       axios.post('checkCategory',{
+                           'name':this.category_name
+                       }).then(res=>{
+                           console.log(res.data);
+                           if(res.data.status==1){
+                               this.error_message='该栏目已经存在!'
+                           }else {
+                               this.error_message='';
+                               this.$refs.form.submit();
+                           }
+                       });
 
+                       console.log('false')
                    }
                 }
             }
@@ -89,12 +105,6 @@
     </script>
     @parent
     <script src="{{asset('vendors/iCheck/icheck.min.js')}}"></script>
-
-
-
-
-
-
 @stop
 
 

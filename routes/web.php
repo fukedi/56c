@@ -23,6 +23,9 @@ Route::group(['middleware'=>['adminAuth']],function(){
 
         Route::get('categoryList','ArticleController@categoryList');
         Route::any('createCategory','ArticleController@createCategory');
+        Route::any('addCategory','ArticleController@addCategory');
+        Route::any('checkCategory','ArticleController@checkCategory');
+
         Route::any('createArticle','ArticleController@createArticle');
         Route::any('addArticle','ArticleController@addArticle');
         //文章列表页

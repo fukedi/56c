@@ -25,6 +25,26 @@ class ArticleController extends Controller{
         return view('admin.article.createCategory');
     }
 
+    //栏目新增入库
+    public function addCategory(Request $request){
+        $data=$request->input('category');
+        $cate=ArticlesCategory::create($data);
+
+        return redirect('admin/categoryList');
+    }
+
+    //检测栏目是否存在
+    public function checkCategory(Request $request){
+        $name=$request->input('name');
+        $result=ArticlesCategory::where('category_name','=',$name)->first();
+        if($result){
+            $status=1;
+        }else{
+            $status=0;
+        }
+        return response()->json(['status'=>$status]);
+    }
+
     //添加文章
     public function createArticle(){
 
