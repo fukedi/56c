@@ -16,4 +16,8 @@ class Articles extends Model{
     public function fromDateTime($value){
         return time(parent::fromDateTime($value));
     }
+
+    public function cate(){
+        return $this->belongsTo('App\ArticlesCategory','category_id','id');
+    }
 }

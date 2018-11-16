@@ -46,8 +46,8 @@ class ArticleController extends Controller{
 
     //添加文章
     public function createArticle(){
-
-        return view('admin.article.createArticle');
+        $cate=ArticlesCategory::where('parent_id','=','0')->get();
+        return view('admin.article.createArticle',['cate'=>$cate]);
     }
 
     //文章新增入库
@@ -67,7 +67,11 @@ class ArticleController extends Controller{
 
     //文章列表
     public function articleList(){
-        $data=Articles::paginate(2);
+        //$data1=Articles::->jget();
+        //dd($data1);
+
+
+        $data=Articles::join('articles_category','articles.category_id','articles_category.id')->select('articles.*','articles_category.category_name')->paginate(2);
         return view('admin.article.articleList',['list'=>$data]);
     }
 }

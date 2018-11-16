@@ -46,10 +46,9 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">所属栏目</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="category_id" class="form-control" required>
-                                    <option value="1">php</option>
-                                    <option value="press">mysql</option>
-                                    <option value="net">linux</option>
-                                    <option value="mouth">前端</option>
+                                    @foreach($cate as $ca)
+                                    <option value="{{$ca->id}}">{{$ca->category_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

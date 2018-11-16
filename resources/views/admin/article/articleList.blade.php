@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{$li->id}}</td>
                         <td>{{$li->title}}</td>
-                        <td>{{$li->category_id}}</td>
+                        <td>{{$li->category_name}}</td>
                         <td>{{$li->author}}</td>
                         <td>{{$li->created_at}}</td>
                         <td>
